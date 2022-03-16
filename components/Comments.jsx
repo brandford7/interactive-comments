@@ -3,22 +3,20 @@ import React, { useState } from "react";
 import { data } from "../data";
 import Comment from "./Comment";
 
-
 const Comments = () => {
   const [comments, setComments] = useState(data.comments);
 
-
-  
-
   return (
     <>
-      <Stack spacing="10" direction="column" display="flex" alignItems="center" >
+      <Stack
+        mt="50px"
+        spacing="10px"
+        direction="column"
+        display="flex"
+        alignItems="center"
+      >
         {comments.map((comment) => (
-          <Comment
-            key={comment.id}
-           comment={comment}
-          />
-        
+          <Comment key={comment.id} comment={comment} />
         ))}
       </Stack>
     </>

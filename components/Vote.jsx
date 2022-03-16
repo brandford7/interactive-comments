@@ -17,12 +17,12 @@ const Vote = () => {
     <>
       <Flex
         bg="hsl(223, 19%, 93%)"
-        direction="column"
+        direction={['row','column','column']}
         justify="space-between"
         align="center"
-        h="90px"
+        h={['35px',"60px",'90px']}
         borderRadius="5px"
-        w="35px"
+        w={["80px","35px","35px"]}
         py="10px"
         border="1px solid black"
       >

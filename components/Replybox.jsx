@@ -11,10 +11,10 @@ import React, { useState } from "react";
 import { data } from "../data";
 
 const Replybox = () => {
-  const [reply, setReply] = useState("");
-
+  const [replies, setReplies] = useState(data.comments.replies);
+const[reply,setReply] = useState('')
   const handleReply = (e) => {
-    setReply([...reply]);
+    setReplies([ ...replies ].push(reply));
   };
   const handleChange = (e) => {
     setReply(e.target.value);
@@ -23,18 +23,20 @@ const Replybox = () => {
     <>
       <Flex
         bg="white"
-        w="680px"
-        h="150px"
+        w={["350px", "650px", "680px"]}
+        h={["150px", "160px", "150px"]}
         align="center"
         justify="center"
         fontSize="16px"
         mx="auto"
+        px={["10px", "0", "0"]}
         mt="15px"
       >
         <Box display="flex" w="610px">
           <Box mr="10px">
             <Img
               h="8"
+              w='8'
               src={data.currentUser.image.png || data.currentUser.image.web}
               alt={data.currentUser.username}
             />

@@ -12,26 +12,29 @@ import { data } from "../data";
 
 const Commentbox = () => {
   const [comment, setComment] = useState("");
+  const [comments, setComments] = useState(data.comments);
 
   const handleComment = (e) => {
-    setComment([...comment]);
+    e.preventDefault();
+    setComments([...comments, { comment }]);
+    console.log(comment);
   };
   const handleChange = (e) => {
     setComment(e.target.value);
   };
+
   return (
     <>
-     
       <Flex
         bg="white"
-        w="680px"
+        w={["350px", "650px", "680px"]}
         h="150px"
         align="center"
         justify="center"
         fontSize="16px"
-        mx='auto'
-        mt='15px'
-        borderRadius='5px'
+        px={["10px", "0", "0"]}
+        mt="15px"
+        borderRadius="5px"
       >
         <Box display="flex" w="610px">
           <Box mr="10px">
@@ -54,7 +57,6 @@ const Commentbox = () => {
           </Button>
         </Box>
       </Flex>
-     
     </>
   );
 };
