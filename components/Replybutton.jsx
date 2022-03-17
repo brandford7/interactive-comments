@@ -2,6 +2,7 @@ import { Box, Text } from "@chakra-ui/react";
 import React from "react";
 
 const Replybutton = () => {
+  
   return (
     <>
       <Box
@@ -9,7 +10,7 @@ const Replybutton = () => {
         justifyContent="center"
         alignItems="center"
         cursor="pointer"
-        onClick={() => setShowReply(!showReply)}
+       
       >
         <svg width="14" height="13" xmlns="http://www.w3.org/2000/svg">
           <path

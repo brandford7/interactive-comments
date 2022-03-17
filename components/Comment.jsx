@@ -1,4 +1,4 @@
-import { Box, Flex, Img, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Img, Stack, Text,chakra } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { data } from "../data";
 import Deletebutton from "./Deletebutton";
@@ -23,8 +23,8 @@ const Comment = ({ comment }) => {
     <>
       <Flex
         direction="column"
-        h={["250px", "160px", "170px"]}
-        w={["350px", "650px", "680px"]}
+        h={["250px", "250px", "170px"]}
+        w={["350px", "400px", "680px"]}
         borderRadius="5px"
         border="1px solid hsl(0, 0%, 100%)"
         bg="hsl(0, 0%, 100%)"
@@ -33,19 +33,19 @@ const Comment = ({ comment }) => {
         <Box
           direction="row"
           pt="5"
-          display="flex"
-          flexDirection={["column", "row", "row"]}
+          display="flex" 
+          flexDirection={["column", "column", "row"]}
         >
-          <Box mr="10px" display={["none", "flex", "flex"]}>
+          <Box mr={["0", "0", "10px"]} display={["none", "none", "flex"]}>
             <Vote />
           </Box>
           <Box
             display="flex"
-            lineHeight="7"
+            lineHeight=""
             flexDirection="column"
             px={["10px", "0", "0"]}
           >
-            <Stack direction="row">
+            <Stack direction="row" pb='10px' >
               <Img
                 h="7"
                 w="7"
@@ -55,8 +55,8 @@ const Comment = ({ comment }) => {
               <Text>{comment.user.username}</Text>
               {comment.user.username === data.currentUser.username && (
                 <Text
-                  h="5"
-                  w="7"
+                  px='2px'
+                  
                   textAlign="center"
                   color="white"
                   bg="hsl(238, 40%, 52%)"
@@ -66,24 +66,27 @@ const Comment = ({ comment }) => {
               )}
               <Text>{comment.createdAt}</Text>
             </Stack>
-            <Text fontSize="16px" color="hsl(211, 10%, 45%)">
+            <chakra.blockquote fontSize="16px" color="hsl(211, 10%, 45%)">
               {comment.content}
-            </Text>
+            </chakra.blockquote>
           </Box>
 
           <Box
             display="flex"
             justifyContent="space-between"
-            px={["10px", "0", "0"]}
+            px={["10px", "10px", "0"]}
+            py={['20px', "20px", "0"]}
           >
-            <Box display={["flex", "none", "none"]}>
+            <Box display={["flex", "flex", "none"]}>
               <Vote />
             </Box>
             <Box>
               {comment.user.username !== data.currentUser.username ? (
-                <Replybutton />
+                <Box onClick={() => setShowReply(!showReply)}>
+                  <Replybutton />
+                </Box>
               ) : (
-                <Flex >
+                <Flex>
                   <Deletebutton />
                   <Editbutton />
                 </Flex>

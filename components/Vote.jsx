@@ -17,13 +17,14 @@ const Vote = () => {
     <>
       <Flex
         bg="hsl(223, 19%, 93%)"
-        direction={['row','column','column']}
+        direction={['row','row','column']}
         justify="space-between"
         align="center"
-        h={['35px',"60px",'90px']}
+        h={['30px',"30px",'90px']}
         borderRadius="5px"
-        w={["80px","35px","35px"]}
-        py="10px"
+        w={["85px","85px","35px"]}
+        py={['0', '0', "10px"]}
+        px={["5px","5px","0"]}
         border="1px solid black"
       >
         <Box cursor="pointer" onClick={handleUpVote}>
