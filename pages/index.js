@@ -13,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon-32x32.png" />
       </Head>
       <Comments />
-      <Commentbox />
+     {/* <Commentbox />*/}
       
     </Flex>
   );

@@ -37,7 +37,7 @@ const[reply,setReply] = useState('')
             <Img
               h="8"
               w='8'
-              src={data.currentUser.image.png || data.currentUser.image.web}
+              src={data.currentUser.image.png || data.currentUser.image.webp}
               alt={data.currentUser.username}
             />
           </Box>

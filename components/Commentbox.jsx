@@ -10,18 +10,8 @@ import {
 import React, { useState } from "react";
 import { data } from "../data";
 
-const Commentbox = () => {
-  const [comment, setComment] = useState("");
-  const [comments, setComments] = useState(data.comments);
-
-  const handleComment = (e) => {
-    e.preventDefault();
-    setComments([...comments, { comment }]);
-    console.log(comment);
-  };
-  const handleChange = (e) => {
-    setComment(e.target.value);
-  };
+const Commentbox = ({handleComment,onChange,value}) => {
+ 
 
   return (
     <>
@@ -44,7 +34,7 @@ const Commentbox = () => {
               alt={data.currentUser.username}
             />
           </Box>
-          <Textarea onChange={handleChange} variant="outline" />
+          <Textarea onChange={onChange} variant="outline" value={value} />
 
           <Button
             onClick={handleComment}
@@ -53,10 +43,11 @@ const Commentbox = () => {
             p="20px"
             ml="10px"
           >
-            Comment
+            SEND
           </Button>
         </Box>
       </Flex>
+      
     </>
   );
 };
