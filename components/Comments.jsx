@@ -1,5 +1,5 @@
 import { Stack } from "@chakra-ui/react";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { data } from "../data";
 import Comment from "./Comment";
 import Commentbox from "./Commentbox";
@@ -7,27 +7,36 @@ import moment from "moment";
 
 const Comments = () => {
   const [comments, setComments] = useState(data.comments);
-  const [newComment, setNewComment] = useState("");
- const [user,setUser]= useState({id:null, content:'', score: 0, createdAt:'',image:'',name:''});
- 
-  
- 
+  const [newComment, setNewComment] = useState();
+  const [user, setUser] = useState(
+  null);
+
+  useEffect(() => {
+    localStorage.setItem("newComment", JSON.stringify(newComment));
+  }, []);
+
   const handleChange = (e) => {
     setNewComment(e.target.value);
   };
-  const handleAddComment = (e) => {
+  const handleAddComment = async (e) => {
     e.preventDefault();
-    const timeStamp = moment(Date.now()).from();
+    const timeStamp = moment().fromNow();
+    const randomNumber = Math.floor(Math.random() * 100);
 
-  setComments([
-    ...comments,
-    { id: 5, content: newComment, score:0, createdAt: timeStamp, image: data.currentUser.image.png, name: data.currentUser.username },
-  ]);
-    console.log(newComment);
-  }
-  useEffect(() => {
-    setComments(comments)
-  }, [comments])
+    setComments([
+      ...comments,
+      {
+        id: randomNumber,
+        content: newComment,
+        createdAt: timeStamp,
+        score: 0,
+        user: {
+          image: { png:data.currentUser.image.png,webp:data.currentUser.image.webp },
+          username: data.currentUser.username,
+        },
+      },
+    ]);
+  };
 
   return (
     <>
@@ -37,7 +46,7 @@ const Comments = () => {
         ))}
         <Commentbox
           handleComment={handleAddComment}
-          onChange={handleChange}
+          handleChange={handleChange}
           value={newComment}
         />
       </Stack>

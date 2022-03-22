@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import { data } from "../data";
 
-const Commentbox = ({handleComment,onChange,value}) => {
+const Commentbox = ({handleComment,handleChange,value}) => {
  
 
   return (
@@ -34,7 +34,7 @@ const Commentbox = ({handleComment,onChange,value}) => {
               alt={data.currentUser.username}
             />
           </Box>
-          <Textarea onChange={onChange} variant="outline" value={value} />
+          <Textarea onChange={handleChange} variant="outline" value={value} />
 
           <Button
             onClick={handleComment}

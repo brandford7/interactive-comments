@@ -10,15 +10,9 @@ import {
 import React, { useState } from "react";
 import { data } from "../data";
 
-const Replybox = () => {
-  const [replies, setReplies] = useState(data.comments.replies);
-const[reply,setReply] = useState('')
-  const handleReply = (e) => {
-    setReplies([ ...replies ].push(reply));
-  };
-  const handleChange = (e) => {
-    setReply(e.target.value);
-  };
+const Replybox = ({handleReply,handleChange,reply}) => {
+ 
+ 
   return (
     <>
       <Flex
@@ -41,7 +35,7 @@ const[reply,setReply] = useState('')
               alt={data.currentUser.username}
             />
           </Box>
-          <Textarea onChange={handleChange} variant="outline" />
+          <Textarea onChange={handleChange} variant="outline" value={reply} />
 
           <Button
             onClick={handleReply}
